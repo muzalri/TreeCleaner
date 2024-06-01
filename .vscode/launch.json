@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-TreeCleanerApplication<TreeCleaner>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.Anmuk.TreeCleaner.TreeCleanerApplication",
+            "projectName": "TreeCleaner",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

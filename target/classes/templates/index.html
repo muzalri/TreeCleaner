@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Riviews</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Riviews</h1>
+        
+        <!-- Form to Add New Riview -->
+        <h1>Submit a Review</h1>
+    <form th:action="@{/save}" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="nama">Name:</label>
+            <input type="text" id="nama" name="nama" required>
+        </div>
+        <div>
+            <label for="deskripsi">Description:</label>
+            <textarea id="deskripsi" name="deskripsi" required></textarea>
+        </div>
+        <div>
+            <label for="gambar">Image:</label>
+            <input type="file" id="gambar" name="gambar" required>
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+        <!-- List of Riviews -->
+        <div class="mt-5">
+            <h2>All Reviews</h2>
+            <div th:if="${riviews.size()} == 0">No reviews available.</div>
+            <div th:each="riview : ${riviews}" class="card mt-3">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${riview.nama}">Review Name</h5>
+                    <p class="card-text" th:text="${riview.deskripsi}">Description</p>
+                    <div th:if="${riview.gambar != null}">
+                        <img th:src="'data:image/png;base64,' + ${riview.gambar}" class="img-fluid" alt="Review Image"/>
+                    </div>
+                    <div th:if="${riview.gambar == null}">
+                        <p>No image available</p>
+                    </div>
+                    <!-- Tombol Edit -->
+                    <a th:href="@{/edit/{id}(id=${riview.id})}" class="btn btn-primary">Edit</a>
+                    <!-- Tombol Delete -->
+                    <form th:action="@{/delete/{id}(id=${riview.id})}" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
