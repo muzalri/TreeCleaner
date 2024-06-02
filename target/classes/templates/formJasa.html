@@ -1,0 +1,30 @@
+<!-- src/main/resources/templates/formJasa.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Form</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>HELM & BAG TREATMENT</h1>
+    <form th:action="@{/jasa/new/save}" th:object="${jasa}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <div>
+            <label>Layanan:</label>
+            <input type="text" th:field="*{layanan}">
+        </div>
+        <div>
+            <label>Price:</label>
+            <input type="number" th:field="*{price}">
+        </div>
+        <div>
+            <label>Keterangan:</label>
+            <textarea th:field="*{keterangan}"></textarea>
+        </div>
+        <div>
+            <button type="submit">Simpan</button>
+        </div>
+    </form>
+    <a th:href="@{/admin}">Kembali ke Daftar Jasa</a>
+</body>
+</html>

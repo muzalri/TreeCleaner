@@ -36,6 +36,9 @@ public class WebSecurityConfig {
             )
             .csrf().disable() // Disable CSRF for testing purposes
             .formLogin(login -> login
+                .loginPage("/custom-login")  // Specify the custom login page
+                .loginProcessingUrl("/login") // Specify the URL to submit the username and password to
+                .defaultSuccessUrl("/admin") // Redirect URL after successful login
                 .permitAll()
             )
             .logout(logout -> logout
