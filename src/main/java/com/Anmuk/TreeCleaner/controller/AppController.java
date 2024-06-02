@@ -108,7 +108,7 @@ public class AppController {
     @RequestMapping("/delete/{id}")
     public String deleteRiview(@PathVariable Long id) {
         riviewService.deleteRiview(id);
-        return "redirect:/";
+        return "redirect:/admin/riview";
     }
 
     
