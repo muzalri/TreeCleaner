@@ -35,6 +35,8 @@ public class AppController {
         @GetMapping("/")
         public String getAllriview (Model model) {
             model.addAttribute("riview", new Riview());
+            model.addAttribute("jasas", jasaService.findAll());
+            model.addAttribute("sepatus", sepatuService.findAll());
             List<Riview> riviews = riviewService.findAll();
             List<RiviewDTO> riviewDTOs = riviews.stream().map(riview -> new RiviewDTO(
                     riview.getId(),

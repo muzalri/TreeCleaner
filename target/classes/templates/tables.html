@@ -294,14 +294,14 @@ xmlns:th="http://www.thymeleaf.org"
 
 
 
-                    <tr th:each="sepatu : ${sepatus}">
+<tr th:each="sepatu : ${sepatus}">
                       <td style="padding-left: 2%;" th:text="${sepatuStat.index + 1}"></td>
 
                       <td th:text="${sepatu.layanan}"></td>
                       <td style="padding-left: 8%;" th:text="${sepatu.price}"></td>
                       <td style="padding-left: 11%;" th:text="${sepatu.keterangan}"></td>
                       <td>
-                          <a th:href="@{|/sepatu/edit/${sepatu.id}|}">Edit</a>
+                                              <a th:href="@{|/sepatu/edit/${sepatu.id}|}">Edit</a>
                           <a th:href="@{|/sepatu/delete/${sepatu.id}|}">Hapus</a>
                       </td>
                   </tr>
