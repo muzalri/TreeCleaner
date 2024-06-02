@@ -180,4 +180,20 @@ public class AppController {
         return "redirect:/admin";
     }
 
+
+
+    @GetMapping("/admin/riview")
+        public String getRiview(Model model) {
+            List<Riview> riviews = riviewService.findAll();
+            List<RiviewDTO> riviewDTOs = riviews.stream().map(riview -> new RiviewDTO(
+                    riview.getId(),
+                    riview.getNama(),
+                    riview.getDeskripsi(),
+                    riview.getGambar() != null ? Base64Utils.encodeToString(riview.getGambar()) : null
+            )).collect(Collectors.toList());
+            model.addAttribute("riviews", riviewDTOs);
+            return "riview";
+        }
+
+
 }
